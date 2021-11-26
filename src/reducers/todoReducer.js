@@ -4,7 +4,8 @@ const initialData = {
 
 const todoReducer = (state = initialData, action) => {
   switch (action.type) {
-    case "ADD_TODO":
+
+    case "ADD-TODO":
       const { id, data } = action.payload;
       return {
         ...state,
@@ -15,7 +16,21 @@ const todoReducer = (state = initialData, action) => {
             data: data,
           },
         ],
-      };
+      }
+
+      case "DELETE-TODO":
+     const newlist = state.list.filter((elem) => elem.id !== action.id)
+      return {
+        ...state,
+        list: newlist
+      }
+      
+      case "CLEAR-TODO":
+         return {
+           ...state,
+           list: []
+         }
+         
     default:
       return state;
   }

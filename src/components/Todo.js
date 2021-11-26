@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addTodo, deleteTodo, clearTodo } from "../actions/actiondefinition";
-import AddBoxIcon from "@mui/icons-material/AddBox";
+
 import DeleteIcon from "@mui/icons-material/Delete";
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
 import "./Todo.css";
 import todoReducer from "../reducers/todoReducer";
+
 
 const Todo = () => {
   const [inputData, setInputData] = useState("");
@@ -13,34 +16,42 @@ const Todo = () => {
   return (
     <div className="main-div">
       <div className="child-div">
-        <p>Add items in your todolist</p>
+        <h1>Add items in your todolist</h1>
 
-        <div>
-          <input
-
-            type="text"
-            placeholder="Add items here"
+        <div className="inputItems">
+          <TextField
+            id="outlined-basic"
+            label="Add your items here!"
+            variant="outlined"
             value={inputData}
             onChange={(event) => setInputData(event.target.value)}
           />
-          <AddBoxIcon
-            className="add-items"
-            onClick={() => dispatch(addTodo(inputData), setInputData(""))}
-          />
+          <Button
+            variant="contained"
+            onClick={() => dispatch(addTodo(inputData), setInputData(""))}>
+            Add
+          </Button>
         </div>
         <div className="showItems">
-          {list.map((elem) => {
-            return (
-              <div className="eachItem " key={elem.id}>
-                <h3>{elem.Inputdata}</h3>
-                {/* <DeleteIcon
-                      className="delete-items"
+          <ol>
+            {list.map((elem) => {
+              return (
+                <div className="eachItem " key={elem.id}>
+                  <li>{elem.data}</li>
+                  <DeleteIcon
+                      id="delete-items"
                       onClick={() => dispatch(deleteTodo(elem.id))}
-                    /> */}
-                {/* <i className="delete-items" onClick = {()=>dispatch(deleteTodo(elem.id))}></i> */}
-              </div>
-            );
-          })}
+                    />
+                    
+                </div>
+              );
+            })}
+          </ol>
+        </div>
+        <div className="showItems">
+          <Button variant="outlined" onClick={() => dispatch(clearTodo())}>
+            Clear All
+          </Button>
         </div>
       </div>
     </div>

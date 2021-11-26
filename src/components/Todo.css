@@ -1,13 +1,4 @@
-/* .Add-items{
-display : flex;
-    text-align: center;
-    margin-top : 50px;
-    margin-left: 10px;
-    color: blue
-}
+.child-div{
 
-.todo-input{
-display: flex;
-    margin-left: 10px;
-    margin-right: 20px;
-} */
+    align-items: right;
+}
