@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addTodo, deleteTodo, clearTodo } from "../actions/actiondefinition";
-
 import DeleteIcon from "@mui/icons-material/Delete";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
-import "./Todo.css";
 import todoReducer from "../reducers/todoReducer";
 
 
